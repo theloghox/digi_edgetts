@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digimix Edge-TTS Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body class="bg-darker text-white font-grotesk min-h-screen overflow-hidden selection:bg-primary selection:text-dark">
+  <div id="app" class="h-screen w-full relative flex flex-col p-6 overflow-y-auto">
+    <!-- Glow Background Effects -->
+    <div
+      class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0">
+    </div>
+    <div
+      class="fixed bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[100px] rounded-full pointer-events-none z-0">
+    </div>
+
+    <!-- Header -->
+    <header class="relative z-10 mb-8 flex justify-between items-center animate-fade-in">
+      <div>
+        <h1 class="font-syne text-4xl font-extrabold tracking-tighter text-white">EDGE<span
+            class="text-primary">TTS</span></h1>
+        <p class="text-white/50 text-sm mt-1 tracking-wide uppercase">Generador de Voz Neural Seguro</p>
+      </div>
+      <div class="px-3 py-1 bg-glass border border-glassBorder rounded-full backdrop-blur-md flex items-center gap-2">
+        <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+        <span class="text-xs font-semibold text-primary">@digitalusersas VERSION</span>
+      </div>
+    </header>
+
+    <!-- Main Bento Grid -->
+    <main class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-0">
+
+      <!-- Input Section -->
+      <section class="lg:col-span-8 flex flex-col gap-6">
+        <div
+          class="bg-glass border border-glassBorder rounded-3xl p-6 backdrop-blur-xl flex-1 flex flex-col transition-all hover:border-white/20">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="font-syne text-xl font-bold flex items-center gap-2">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+              Texto a Sintetizar
+            </h2>
+          </div>
+          <textarea id="text-input"
+            class="w-full flex-1 bg-black/40 border border-white/5 rounded-2xl p-5 text-white placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none text-lg leading-relaxed shadow-inner font-grotesk"
+            placeholder="Escribe o pega aquí el texto que deseas convertir en voz..."></textarea>
+        </div>
+      </section>
+
+      <!-- Controls Section -->
+      <section class="lg:col-span-4 flex flex-col gap-6">
+
+        <!-- Voice Settings -->
+        <div
+          class="bg-glass border border-glassBorder rounded-3xl p-6 backdrop-blur-xl transition-all hover:border-white/20">
+          <h2 class="font-syne text-xl font-bold mb-5 flex items-center gap-2">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+            Parámetros de Voz
+          </h2>
+
+          <div class="space-y-5">
+            <div>
+              <label class="block text-xs font-semibold text-white/50 mb-2 uppercase tracking-wider">Voz Neural</label>
+              <div class="relative">
+                <select id="voice-select"
+                  class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-white appearance-none focus:outline-none focus:border-primary/50 transition-all cursor-pointer hover:bg-black/60">
+                  <optgroup label="Español (México)">
+                    <option value="es-MX-JorgeNeural">Jorge (Masculino)</option>
+                    <option value="es-MX-DaliaNeural">Dalia (Femenino)</option>
+                    <option value="es-MX-PelayoNeural">Pelayo (Masculino)</option>
+                  </optgroup>
+                  <optgroup label="Español (España)">
+                    <option value="es-ES-AlvaroNeural">Alvaro (Masculino)</option>
+                    <option value="es-ES-ElviraNeural">Elvira (Femenino)</option>
+                    <option value="es-ES-XimenaNeural">Ximena (Femenino)</option>
+                  </optgroup>
+                  <optgroup label="Español (Colombia)">
+                    <option value="es-CO-GonzaloNeural">Gonzalo (Masculino)</option>
+                    <option value="es-CO-SalomeNeural">Salomé (Femenino)</option>
+                  </optgroup>
+                  <optgroup label="Español (Argentina)">
+                    <option value="es-AR-TomasNeural">Tomás (Masculino)</option>
+                    <option value="es-AR-ElenaNeural">Elena (Femenino)</option>
+                  </optgroup>
+                  <optgroup label="Español (Otros)">
+                    <option value="es-CL-LorenzoNeural">Lorenzo (Chile)</option>
+                    <option value="es-PE-AlexNeural">Alex (Perú)</option>
+                    <option value="es-VE-SebastianNeural">Sebastián (Venezuela)</option>
+                  </optgroup>
+                  <optgroup label="Inglés (EE.UU.)">
+                    <option value="en-US-AriaNeural">Aria (Femenino)</option>
+                    <option value="en-US-GuyNeural">Guy (Masculino)</option>
+                    <option value="en-US-ChristopherNeural">Christopher (Masculino)</option>
+                    <option value="en-US-JennyNeural">Jenny (Femenino)</option>
+                    <option value="en-US-SteffanNeural">Steffan (Masculino)</option>
+                  </optgroup>
+                </select>
+                <svg class="w-4 h-4 absolute right-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none"
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-semibold text-white/50 uppercase tracking-wider">Velocidad</label>
+                <span id="rate-value" class="text-xs text-primary font-mono">+0%</span>
+              </div>
+              <input type="range" id="rate-slider" min="-100" max="100" value="0"
+                class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary">
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-semibold text-white/50 uppercase tracking-wider">Tono (Pitch)</label>
+                <span id="pitch-value" class="text-xs text-primary font-mono">+0Hz</span>
+              </div>
+              <input type="range" id="pitch-slider" min="-50" max="50" value="0"
+                class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary">
+            </div>
+
+            <div>
+              <div class="flex justify-between mb-2">
+                <label class="text-xs font-semibold text-white/50 uppercase tracking-wider">Volumen</label>
+                <span id="volume-value" class="text-xs text-primary font-mono">+0%</span>
+              </div>
+              <input type="range" id="volume-slider" min="-100" max="100" value="0"
+                class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary">
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="generate-btn"
+          class="mt-4 group relative w-full bg-primary text-dark font-syne font-bold text-lg py-5 px-6 rounded-3xl overflow-hidden transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_40px_-10px_rgba(204,255,0,0.5)]">
+          <div
+            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+          </div>
+          <span class="relative z-10 flex justify-center items-center gap-2">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Sintetizar Audio
+          </span>
+        </button>
+
+        <!-- Persistent Terminal / Status -->
+        <div
+          class="mt-auto bg-black/60 border border-white/10 rounded-2xl p-4 font-mono text-xs relative overflow-hidden">
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50">
+          </div>
+          <div class="flex items-center gap-2 mb-2 border-b border-white/5 pb-2">
+            <div class="w-2 h-2 rounded-full bg-red-500"></div>
+            <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+            <span class="text-white/30 ml-2 uppercase tracking-widest text-[10px]">Terminal / Logs</span>
+          </div>
+          <p id="status-text" class="text-primary/80 flex items-center gap-2">
+            <span class="animate-pulse">_</span> Esperando input del operador...
+          </p>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="relative z-10 mt-6 flex justify-between items-center text-[10px] text-white/30 uppercase tracking-widest font-mono border-t border-white/5 pt-4">
+      <span>DIGIMIX CYBERSECURITY CORE v1.0</span>
+      <span class="flex items-center gap-1">
+        <svg class="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        Conexión Segura Establecida
+      </span>
+    </footer>
+  </div>
+</body>
+
+</html>
