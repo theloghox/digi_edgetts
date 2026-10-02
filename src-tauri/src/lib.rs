@@ -3,7 +3,8 @@ use std::time::{SystemTime, UNIX_EPOCH};
 
 #[tauri::command]
 async fn generate_audio(text: String, voice: String, rate: String, pitch: String, volume: String) -> Result<String, String> {
-    let default_path = r#"C:\Users\loghox\AppData\Local\Python\pythoncore-3.14-64\Scripts\edge-tts.exe"#;
+    let local_appdata = std::env::var("LOCALAPPDATA").unwrap_or_else(|_| String::from(r#"C:\AppData"#));
+    let default_path = format!(r#"{}\Python\pythoncore-3.14-64\Scripts\edge-tts.exe"#, local_appdata);
     let edge_tts_path = if std::path::Path::new(default_path).exists() {
         default_path
     } else {
@@ -15,7 +16,8 @@ async fn generate_audio(text: String, voice: String, rate: String, pitch: String
     let since_the_epoch = start
         .duration_since(UNIX_EPOCH)
         .expect("Time went backwards");
-    let filename = format!(r#"C:\Users\loghox\Downloads\audio_{}.mp3"#, since_the_epoch.as_secs());
+    let user_profile = std::env::var("USERPROFILE").unwrap_or_else(|_| String::from(r#"C:\Users\Default"#));
+    let filename = format!(r#"{}\Downloads\audio_{}.mp3"#, user_profile, since_the_epoch.as_secs());
 
     let output = Command::new(edge_tts_path)
         .arg("--text")
