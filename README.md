@@ -62,13 +62,3 @@ Una vez terminado, encontrarás tu ejecutable listo para distribución en la car
 
 *(Nota: El usuario final seguirá necesitando tener Python y `edge-tts` instalados en su sistema para que el audio pueda ser sintetizado).*
 
----
-
-## 📜 Arquitectura y Mesa Redonda
-
-Este proyecto fue estructurado simulando una "Mesa Redonda de Agentes" bajo el protocolo MECCI:
-- **Arquitecto de Software:** Diseño de integración Tauri (Rust + JS).
-- **Diseñador UI Experto:** Entropía visual con Tailwind v4 y variables CSS nativas.
-- **Ingeniero DevOps:** Orquestación de dependencias y ejecución de binarios remotos.
-
-> Desarrollado con 🖤 por DIGIMIX y su escuadrón operativo.
