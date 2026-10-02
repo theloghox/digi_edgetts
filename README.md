@@ -1,4 +1,4 @@
-# 🎙️ DIGIMIX EDGE-TTS PRO
+# 🎙️ EDGE-TTS GUI
 
 ![DIGIMIX EDGE-TTS PRO](https://img.shields.io/badge/Estado-Operativo-brightgreen?style=for-the-badge&logo=rust) ![Rust](https://img.shields.io/badge/Rust-Core-orange?style=for-the-badge&logo=rust) ![Tauri](https://img.shields.io/badge/Tauri-v2-FFD13B?style=for-the-badge&logo=tauri) ![TailwindCSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)
 
